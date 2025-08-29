@@ -36,7 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setUser(session?.user ?? null);
       setLoading(false);
     });
@@ -55,8 +55,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const register = async (email: string, password: string) => {
     const auth_callback_url =
-      `${process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL}/auth/callback` ||
-      `${window.location.origin}/auth/callback`;
+      `${process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL}/api/auth/callback` ||
+      `${window.location.origin}/api/auth/callback`;
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -71,14 +71,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = async () => {
     const { error } = await supabase.auth.signOut();
-    if (!error) redirect("/auth");
+    if (!error) return redirect("/auth");
     return { error };
   };
 
   const loginWithProvider = async (provider: "github" | "google") => {
     const auth_callback_url =
-      `${process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL}/auth/callback` ||
-      `${window.location.origin}/auth/callback`;
+      `${process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL}/api/auth/callback` ||
+      `${window.location.origin}/api/auth/callback`;
 
     const { error } = await supabase.auth.signInWithOAuth({
       provider,

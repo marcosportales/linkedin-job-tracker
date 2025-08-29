@@ -24,13 +24,15 @@ export function RegisterForm() {
     const password = formData.get("password") as string;
 
     try {
+      const auth_callback_url =
+        `${process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL}/api/auth/callback` ||
+        `${window.location.origin}/api/auth/callback`;
+
       const { error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo:
-            process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL ||
-            `${window.location.origin}/`,
+          emailRedirectTo: auth_callback_url,
           data: {
             full_name: name,
           },
