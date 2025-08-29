@@ -18,8 +18,6 @@ export function SocialLoginButtons() {
     try {
       const { error } = await loginWithProvider(provider);
 
-      console.log(error);
-
       if (!error) {
         toast.success("Welcome!", {
           description: `Successfully signed in with ${provider.charAt(0).toUpperCase() + provider.slice(1)}.`,
