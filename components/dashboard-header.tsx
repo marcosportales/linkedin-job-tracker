@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/auth-provider";
 import { createClient } from "@/lib/supabase/client";
-import { LogOut, Briefcase } from "lucide-react";
+import { LogOut, Briefcase, User } from "lucide-react";
 import Image from "next/image";
 
 export function DashboardHeader() {
@@ -17,18 +17,22 @@ export function DashboardHeader() {
           <h1 className="text-xl font-bold">LinkedIn Job Tracker</h1>
         </div>
         <div className="flex items-center gap-4">
-          {user && (
-            <Image
-              src={user?.user_metadata?.avatar_url}
-              alt={`${user?.user_metadata?.name} user avatar`}
-              width={32}
-              height={32}
-              className="rounded-full"
-            />
-          )}
+          {user &&
+            (user?.user_metadata?.avatar_url ? (
+              <Image
+                src={user?.user_metadata?.avatar_url}
+                alt={`${user?.user_metadata?.name} user avatar`}
+                width={32}
+                height={32}
+                className="rounded-full"
+              />
+            ) : (
+              <User />
+            ))}
 
           <span className="text-sm text-muted-foreground">
-            Welcome, {user?.user_metadata?.name || ""}
+            Welcome,{" "}
+            {user?.user_metadata?.name || user?.user_metadata?.full_name}
           </span>
           <Button
             variant="outline"
