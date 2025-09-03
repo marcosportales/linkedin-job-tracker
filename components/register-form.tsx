@@ -44,13 +44,13 @@ export function RegisterForm() {
           description: error.message,
         });
       } else {
-        toast.error("Account created!", {
+        toast.success("Account created!", {
           description: "Please check your email to confirm your account.",
         });
         router.push("/auth");
       }
     } catch (error) {
-      toast("Error", {
+      toast.error("Error", {
         description: "An unexpected error occurred. Please try again.",
       });
     } finally {
