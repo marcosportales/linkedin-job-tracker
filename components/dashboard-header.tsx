@@ -26,7 +26,7 @@ export function DashboardHeader() {
                 className="rounded-full"
               />
             ) : (
-              <User />
+              <User className="size-8" />
             ))}
 
           <span className="text-sm text-muted-foreground">
