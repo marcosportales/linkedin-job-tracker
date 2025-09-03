@@ -47,7 +47,7 @@ export function RegisterForm() {
         toast.success("Account created!", {
           description: "Please check your email to confirm your account.",
         });
-        router.push("/auth");
+        // router.push("/");
       }
     } catch (error) {
       toast.error("Error", {
