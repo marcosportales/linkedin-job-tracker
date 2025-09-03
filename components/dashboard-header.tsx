@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/auth-provider";
-import { createClient } from "@/lib/supabase/client";
 import { LogOut, Briefcase, User } from "lucide-react";
 import Image from "next/image";
 
