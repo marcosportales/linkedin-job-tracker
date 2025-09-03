@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
+  console.log({ searchParams, origin, url: request.url });
   const code = searchParams.get("code");
   let next = searchParams.get("next") ?? "/";
   if (!next.startsWith("/")) {
@@ -15,6 +16,8 @@ export async function GET(request: Request) {
     if (!error) {
       const forwardedHost = request.headers.get("x-forwarded-host");
       const isLocalEnv = process.env.NODE_ENV === "development";
+      console.log("env", process.env.NODE_ENV, { code });
+
       if (isLocalEnv) {
         return NextResponse.redirect(`${origin}${next}`);
       } else if (forwardedHost) {
