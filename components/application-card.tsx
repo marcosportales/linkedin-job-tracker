@@ -38,15 +38,15 @@ export function ApplicationCard({ application, onEdit, onDelete }: ApplicationCa
   return (
     <Card>
       <CardContent className="p-6">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex-1">
-            <div className="flex items-center gap-4 mb-2">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 mb-2">
               <h3 className="font-semibold text-lg">{application.jobTitle}</h3>
               <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(application.status)}`}>
                 {application.status.charAt(0).toUpperCase() + application.status.slice(1)}
               </span>
             </div>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1">
                 <Briefcase className="h-4 w-4" />
                 {application.company}
@@ -57,7 +57,7 @@ export function ApplicationCard({ application, onEdit, onDelete }: ApplicationCa
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-2 md:gap-2">
             <Button variant="outline" size="sm" asChild>
               <a href={application.link} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="h-4 w-4 mr-2" />
