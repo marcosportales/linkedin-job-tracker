@@ -13,7 +13,7 @@ export function DashboardHeader() {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Briefcase className="h-6 w-6 text-primary" />
-          <h1 className="text-xl font-bold">LinkedIn Job Tracker</h1>
+          <h1 className="text-xl max-md:hidden font-bold">LinkedIn Job Tracker</h1>
         </div>
         <div className="flex items-center gap-4">
           {user &&
@@ -29,7 +29,7 @@ export function DashboardHeader() {
               <User className="size-8" />
             ))}
 
-          <span className="text-sm text-muted-foreground">
+          <span className="max-md:hidden text-sm text-muted-foreground">
             Welcome,{" "}
             {user?.user_metadata?.name || user?.user_metadata?.full_name}
           </span>

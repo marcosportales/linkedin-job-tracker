@@ -17,9 +17,9 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="flex-1">
+      <main className="flex-1">
         <JobDashboard />
-      </div>
+      </main>
       <Footer />
     </div>
   );
